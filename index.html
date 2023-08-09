@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">    <title>Aj Phrang</title>
+
+
+
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 text-center mb-4">
+                <h1 class="font-weight-bold">ถอดรหัสเลขศาสตร์</h1>
+            </div>
+            <!-- The rest of your code... -->
+        </div>
+    </div>
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-9" id="maindiv">
+            <div class="row">
+                <div class="col-4 text-right">
+                    <label for="textbox1">ชื่อ:</label>
+                </div>
+                <div class="col-4">
+                    <input type="text" id="textbox1" class="form-control" placeholder="พิมชื่ิอ">
+                </div>
+
+                <div class="col-4">
+                    <input type="text" id="textbox11" class="form-control" placeholder="คะแนนขื่อ">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-4 text-right">
+                    <label for="textbox2">นามสกุล:</label>
+                </div>
+                <div class="col-4">
+                    <input type="text" id="textbox2" class="form-control" placeholder="พิมนามสกุล">
+                </div>
+                <div class="col-4">
+                    <input type="text" id="textbox22" class="form-control" placeholder="คะแนนนามสกุล">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-8 text-right">
+                    <label for="textbox3">ผลรวม:</label>
+                </div>
+                <div class="col-4">
+                    <input type="text" id="textbox3" class="form-control" placeholder="คะแนนรวม">
+                </div>
+            </div>
+        </div>
+
+        <!-- Code div -->
+        <div class="col-lg-3" id="codediv">
+            <div class="mb-3">
+                <label for="code1" class="form-label">รหัส1:อายตนะ</label>
+                <input type="text" id="code1" class="form-control" placeholder="คะแนน">
+            </div>
+            <div>
+                <label for="code2" class="form-label">รหัส2:พลังเงา</label>
+                <input type="text" id="code2" class="form-control" placeholder="คะแนน">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    let nameInput = document.getElementById('textbox1');
+    let surnameInput = document.getElementById('textbox2');
+    let resultInput = document.getElementById('textbox3');
+    let resultNInput = document.getElementById('textbox11');
+    let resultSInput = document.getElementById('textbox22');
+    let resultCode1 = document.getElementById('code1');
+    let resultCode2 = document.getElementById('code2');
+    function calculateScore(str) {
+        let score = 0;
+        for(let i = 0; i < str.length; i++) {
+            let char = str[i].toLowerCase(); // Convert character to lowercase
+            if('ดกถภฤทาุำ่aijqy'.includes(char)) {
+                score += 1;
+            }
+            if('ขชบปงเแู้brk'.includes(char)) {
+                score += 2;
+            }
+            if('ฃฅฆฒตฑ+cgls'.includes(char)) {
+                score += 3;
+            }
+
+            if('คธรญษโะิัdmt'.includes(char)) {
+                score += 4;
+            }
+
+            if('ฉณฌนมฎหฬฮ฿ehnx'.includes(char)) {
+                score += 5;
+            }
+
+            if('วอจลใuvw'.includes(char)) {
+                score += 6;
+            }
+
+            if('ศสซ๊์๊oz'.includes(char)) {
+                score += 7;
+            }
+
+
+            if('ยพฟผฝ็fp'.includes(char)) {
+                score += 8;
+            }
+
+            if('ฏฐไ์'.includes(char)) {
+                score += 9;
+            }
+
+            if(!isNaN(char) && char !== ' ') { // Check if character is a number and not a space
+    score += parseInt(char); // Convert string number to integer and add to score
+}
+
+            // Continue for other conditions
+        }
+        return score;
+    }
+
+    function updateScore() {
+
+        let totalScoreN =  calculateScore(nameInput.value);
+        let totalScoreS =  calculateScore(surnameInput.value);
+        let totalScore = totalScoreN+ totalScoreS;
+        resultNInput.value = totalScoreN;
+        resultSInput.value = totalScoreS;
+        resultInput.value = totalScore;
+        resultCode2.value = totalScore;
+    
+
+        resultCode1.value =calculateScore( totalScore.toString())
+    }
+
+
+    nameInput.addEventListener('input', updateScore);
+    surnameInput.addEventListener('input', updateScore);
+});
+</script>
+</body>
+</html>
